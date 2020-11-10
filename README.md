@@ -36,6 +36,8 @@ _not ready to use now_
 #include <RotaryController.h>
 ```
 
+
+
 ### Define your Controller
 Outside of the setup and loop functions you define but do not initialze all your controllers.
 We need to define a pointer variable from the descired Controllers. 
@@ -46,12 +48,12 @@ PotiController* potiController;
 ### Initialize the Controller
 Inside the setup function you shall init all your controllers
 ```Arduino
-// Here we define a Controller for Potis but all Controllers but the rest do the same way
-potiController = new PotiController(
-  3, // We want to use 3 Potis
-  {0, 1, 2}, // They should communitate on Midi Key 0, 1 and 2
-  {1, 2, 3}); // Their pins are 1, 2 and 3
+ButtonController buttonController = ButtonController();
 ```
+That's it. We decided to go simple stupid. For sure if you are a dev too you might want to fight with pointers and memory. But as this Library is intended for fotographs completly regardless if they can read on line of code or not.
+Everything get's configured with #define - That's too easy.
+Just have an eye on this file https://github.com/mommel/schwurblerControllers/blob/master/include/SchwurblerController.h Everything is defined there. If you wanr to customize just copy the decired lines to your main.cpp and your are good to go.
+
 This will result in a setup of 3 Potis
 * Poti 1 sends Key 0 listens on Pin 1
 * Poti 2 sends Key 1 listens on Pin 2
