@@ -78,7 +78,7 @@ class RotaryController {
    */
   RotaryController() { 
       for (int i = 0; i <= Schwurbler_DEF_RotaryEncoderController_Amount / 2; i++) {
-          this->rotaryEncoder[i] = new RotaryEncoder(1, 2);
+       
       }
    }
 
@@ -88,7 +88,7 @@ class RotaryController {
   const uint8_t kAmount = Schwurbler_DEF_RotaryEncoderController_Amount;
   const int pins[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Pins;
   const int midiKeys[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Keys;
-  RotaryEncoder rotaryEncoder[Schwurbler_DEF_RotaryEncoderController_Amount];
+  // RotaryEncoder rotaryEncoder[Schwurbler_DEF_RotaryEncoderController_Amount];
   MidiValueChangeCallbackHandler midiValueChangeCallback;
 
  public:
