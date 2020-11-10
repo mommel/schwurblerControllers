@@ -1,6 +1,6 @@
 {
   "name": "SchwurblerControllers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Control Library for Midi Inputs",
   "keywords": "controller, midi, input, rotary, button, poti",
   "repository": {
