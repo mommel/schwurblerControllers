@@ -77,22 +77,31 @@
 #define Schwurbler_DEF_PotiController_Keys                    { 21, 22, 23, 25, 26, 27, 28, 30, 31 }
 #endif // Schwurbler_DEF_PotiController_Keys
 
-#ifndef Schwurbler_DEF_PotiController_BounceTime
-// Set's the time each button gets debounced
-// The sensor will check for falling and raising edges
-// But as the signal isn't always top notch
-// we need to debounce it to get valid status changes
-#define Schwurbler_DEF_PotiController_BounceTime              7
-#endif // Schwurbler_DEF_PotiController_BounceTime
+// ------------------------------------            PotiController Definitions          ------------------------------------ //
+#endif // Schwurbler_DEF_PotiController_Active
 
-#ifndef Schwurbler_DEF_PotiController_TriggerVelocity
-// Set's the velocity the ON Trigger gets send with over MIDI
-#define Schwurbler_DEF_PotiController_TriggerVelocity         99
-#endif // Schwurbler_DEF_PotiController_TriggerVelocity
+// ------------------------------------            PotiController Definitions          ------------------------------------ //
+// If active is defined all needed  will be checked
+#ifdef Schwurbler_DEF_RotaryEncoderController_Active
+
+#ifndef Schwurbler_DEF_RotaryEncoderController_Amount
+// Set's the Pins for the Buttons
+#define Schwurbler_DEF_RotaryEncoderController_Amount                  8
+#endif // Schwurbler_DEF_RotaryEncoderController_Amount
+
+#ifndef Schwurbler_DEF_RotaryEncoderController_Pins
+// Set's the Pins for the Buttons
+#define Schwurbler_DEF_RotaryEncoderController_Pins                    { 23, 22, 21, 20, 19, 18, 17, 16 }
+#endif // Schwurbler_DEF_RotaryEncoderController_Pins
+
+#ifndef Schwurbler_DEF_RotaryEncoderController_Keys
+// Set's the MidiKeys for the Buttons
+#define Schwurbler_DEF_RotaryEncoderController_Keys                    { 21, 22, 23, 25, 26, 27, 28, 30 }
+#endif // Schwurbler_DEF_RotaryEncoderController_Keys
 
 
 // ------------------------------------            PotiController Definitions          ------------------------------------ //
-#endif // Schwurbler_DEF_PotiController_Active
+#endif // Schwurbler_DEF_RotaryEncoderController_Active
 //                                                                                                                          //
 //                                                                                                                          //
 //                                                                                                                          //

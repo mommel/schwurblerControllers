@@ -116,6 +116,11 @@ see doc
 ## Project running with this library
 [Der Schwurbler](https://github.com/mommel/hs-lr-midi-schwurbler)
 
+### Uses 3rdparty libraries
+The controllers use 3rd party libraries, that are not included but marked as dependencies. Those libraries have their own licences and are not touched by the library used by SchwurblerControllers
+
+### Credits
+We like to thank dxinteractive for ResponsiveAnalogRead, mathertel for RotaryEncoder and thomasfredericks for Bounce2
 
 ## License
 

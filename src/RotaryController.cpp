@@ -55,28 +55,28 @@
   * Date:    Oct 14 2020                                                       *
   * Name:    Manuel Braun                                                      *
   * Email:   mommel@gmx de                                                     *
-  *                                              ‚                              *
+  *                                                                            *
   ******************************************************************************
  */
 #include "RotaryController.h"
 
 int RotaryController::getAmount() {
-  return this->kAmount_;
+  return this->kAmount;
 }
 
 int RotaryController::getPin(int identifier) {
-  return this->pin_[identifier];
+  return this->pins[identifier];
 }
 
 void RotaryController::handleMidiValueChangeCallback(
-    MidiValueChangeCallbackHandler midiValueChangeCallback) {
-  this->midiValueChangeCallback_ = midiValueChangeCallback;
+    MidiValueChangeCallbackHandler _midiValueChangeCallback) {
+  this->midiValueChangeCallback = _midiValueChangeCallback;
 }
 
 void RotaryController::getData() {
-  for (int rotaryIdentifier = 0; rotaryIdentifier < this->kAmount_;
+  for (int rotaryIdentifier = 0; rotaryIdentifier < this->kAmount;
        rotaryIdentifier++) {
-    // TODO(mommel): Needs to be implement functionality here.
+    
   }
 }
 

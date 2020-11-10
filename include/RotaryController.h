@@ -39,6 +39,7 @@
   *
   */
 #pragma once
+#define Schwurbler_DEF_RotaryEncoderController_Active
 #ifndef SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_
 #define SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_
 #include <SchwurblerController.h> // Definitionsheader
@@ -47,7 +48,7 @@
 #ifndef ARDUINO
 #include "Arduino.h" // Arduino Header
 #endif // ARDUINO
-typedef struct RotaryEncoder SchwurblerRotaryEncoder;
+// typedef struct RotaryEncoder SchwurblerRotaryEncoder;
 
 /**
  * Definiton of Callback Value Change Callback
@@ -66,6 +67,7 @@ class RotaryController {
  public:
   /**
    * RotaryController constructor
+   * @warning Not yet completed 
    * @param amount amount of Buttons the controller should be able to handle
    * @param pinList List of pin numbers matches Button by Button e.g. {1, 2, 3}
    * @param midiValueList List of Midivalues matches Button by Button e.g. {21,
@@ -74,36 +76,22 @@ class RotaryController {
    * midiValueList etc.
    *
    */
-  RotaryController(int amount, std::initializer_list<int> pinList,
-                   std::initializer_list<int> midiValueList)
-      : kAmount_(amount) {
-    this->pin_ = new int[amount];
-    int counter = 0;
-    for (int pin : pinList) {
-      this->pin_[counter] = pin;
-      ++counter;
-    }
-    this->midiValue_ = new int[amount];
-    counter = 0;
-    for (int e : midiValueList) {
-      this->midiValue_[counter] = e;
-      ++counter;
-    }
-    this->midiValueChangeCallback_ = NULL;
-  }
-
-  RotaryController(const RotaryController& obj);
+  RotaryController() { 
+      for (int i = 0; i <= Schwurbler_DEF_RotaryEncoderController_Amount / 2; i++) {
+          this->rotaryEncoder[i] = new RotaryEncoder(1, 2);
+      }
+   }
 
   ~RotaryController() {}
 
  private:
-  const int kAmount_;
-  int* pin_;
-  int* midiValue_;
-  MidiValueChangeCallbackHandler midiValueChangeCallback_;
+  const uint8_t kAmount = Schwurbler_DEF_RotaryEncoderController_Amount;
+  const int pins[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Pins;
+  const int midiKeys[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Keys;
+  RotaryEncoder rotaryEncoder[Schwurbler_DEF_RotaryEncoderController_Amount];
+  MidiValueChangeCallbackHandler midiValueChangeCallback;
 
  public:
-  RotaryController& operator=(const RotaryController& t);
   /**
    * Returns Buttons amount of controller
    */
@@ -121,8 +109,7 @@ class RotaryController {
    * void *(int MidiKey, byte Midivalue);
    * pointer to a function
    */
-  void handleMidiValueChangeCallback(
-      MidiValueChangeCallbackHandler midiValueChangeCallback);
+  void handleMidiValueChangeCallback(MidiValueChangeCallbackHandler midiValueChangeCallback);
 
   /**
    * Itterates over all buttons and checks for status changes.
