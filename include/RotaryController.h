@@ -43,7 +43,7 @@
 #ifndef SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_
 #define SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_
 #include <SchwurblerController.h> // Definitionsheader
-#include <RotaryEncoder.h>  // Dependent library header
+#include <Encoder.h>
 
 #ifndef ARDUINO
 #include "Arduino.h" // Arduino Header
@@ -76,21 +76,24 @@ class RotaryController {
    * midiValueList etc.
    *
    */
-  RotaryController() { 
-      for (int i = 0; i <= Schwurbler_DEF_RotaryEncoderController_Amount / 2; i++) {
-       
-      }
-   }
+  RotaryController() {
+    for (int i = 0; i <= Schwurbler_DEF_RotaryEncoderController_Amount; i++) {
+      this->rotaryPositionStore[i] = -999;
+      this->rotaryEncoder[i] = new Encoder(this->getPin(i), this->getPin2(i));
+    };
+  }
 
   ~RotaryController() {}
 
  private:
   const uint8_t kAmount = Schwurbler_DEF_RotaryEncoderController_Amount;
   const int pins[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Pins;
+  const int pins2[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Pins2;
   const int midiKeys[Schwurbler_DEF_RotaryEncoderController_Amount] = Schwurbler_DEF_RotaryEncoderController_Keys;
-  // RotaryEncoder rotaryEncoder[Schwurbler_DEF_RotaryEncoderController_Amount];
+  int rotaryPositionStore[Schwurbler_DEF_RotaryEncoderController_Amount];
+  Encoder *rotaryEncoder[Schwurbler_DEF_RotaryEncoderController_Amount];
   MidiValueChangeCallbackHandler midiValueChangeCallback;
-
+  
  public:
   /**
    * Returns Buttons amount of controller
@@ -102,6 +105,12 @@ class RotaryController {
    * @param identifier Identfies a button
    */
   int getPin(int identifier);
+
+  /**
+   * Returns the Pin matching to Button
+   * @param identifier Identfies a button
+   */
+  int getPin2(int identifier);
 
   /**
    * Sets the callbackfunction to be called while getData

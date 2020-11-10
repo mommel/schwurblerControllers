@@ -86,17 +86,22 @@
 
 #ifndef Schwurbler_DEF_RotaryEncoderController_Amount
 // Set's the Pins for the Buttons
-#define Schwurbler_DEF_RotaryEncoderController_Amount                  8
+#define Schwurbler_DEF_RotaryEncoderController_Amount                  4
 #endif // Schwurbler_DEF_RotaryEncoderController_Amount
 
 #ifndef Schwurbler_DEF_RotaryEncoderController_Pins
 // Set's the Pins for the Buttons
-#define Schwurbler_DEF_RotaryEncoderController_Pins                    { 23, 22, 21, 20, 19, 18, 17, 16 }
+#define Schwurbler_DEF_RotaryEncoderController_Pins                    { 23, 21, 19, 17 }
 #endif // Schwurbler_DEF_RotaryEncoderController_Pins
+
+#ifndef Schwurbler_DEF_RotaryEncoderController_Pins2
+// Set's the Pins for the Buttons2
+#define Schwurbler_DEF_RotaryEncoderController_Pins2                   { 22, 20, 18, 16 }
+#endif // Schwurbler_DEF_RotaryEncoderController_Pins2
 
 #ifndef Schwurbler_DEF_RotaryEncoderController_Keys
 // Set's the MidiKeys for the Buttons
-#define Schwurbler_DEF_RotaryEncoderController_Keys                    { 21, 22, 23, 25, 26, 27, 28, 30 }
+#define Schwurbler_DEF_RotaryEncoderController_Keys                    { 21, 22, 23, 25 }
 #endif // Schwurbler_DEF_RotaryEncoderController_Keys
 
 

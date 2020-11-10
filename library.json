@@ -1,6 +1,6 @@
 {
   "name": "SchwurblerControllers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Control Library for Midi Inputs",
   "keywords": "controller, midi, input, rotary, button, poti",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "authors": [{
     "name": "Manuel Braun",
-    "email": "mommel@gmx.de",
+    "email": "mommel.dev@gmail.com",
     "url": "https://www.mommel.com/",
     "maintainer": true
   }],
