@@ -1,0 +1,6 @@
+.DS_Store
+/.vscode
+/.pio
+docs/build/xml
+docs/build/latex
+utils/node_modules

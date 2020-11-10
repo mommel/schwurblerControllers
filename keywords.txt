@@ -1,0 +1,33 @@
+#######################################
+# Syntax Coloring Map For SchwurblerControllers
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SchwurblerControllers   KEYWORD1
+ButtonController        KEYWORD1
+PotiController          KEYWORD1
+RotaryController        KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+GetAmount                   KEYWORD2
+GetPin                      KEYWORD2
+HandleMidiTriggerCallback	KEYWORD2
+GetData                     KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+kAmount LITERAL1
+pinList LITERAL1
+midiValueList LITERAL1
