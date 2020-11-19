@@ -1,19 +1,73 @@
+/**
+ * @file RotaryController.h
+ * @class RotaryController
+ *
+ * @defgroup   ROTARYCONTROLLER Rotary Controller
+ *
+ * @brief       The Controller for the Rotary Encoder.
+ *
+ * @author     Manuel Braun
+ * @date       2020-10-14
+ *
+ * @version 1.0.3
+ *
+ * @copyright Copyright (c) 2020 - Manuel Braun & HappyShooting Community
+ *
+ * @section DESCRIPTION
+ *
+ * Der Schwurbler
+ *
+ * This product includes software developed by the
+ * HappyShooting Community (http://happyshooting.de/).
+ *
+ * @section LICENSE
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the (CC BY-NC-SA 4 0)
+ * Creative Commons Attribution-NonCommercial-ShareAlike 4 0 International
+ * as published by Creative Commons Corporation; either version 4 of the
+ * License, or (at your option) any later version
+ *
+ * @section DISCLAIMER
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+ * USE OR OTHER DEALINGS IN THE SOFTWARE
+ *
+ * @section LOGO
+ *
+ ******************************************************************************
+ *            :+==+                                           -:              *
+ *       -+#=+-  -=-    -*                             -O|   +W+              *
+ *    -=#+-     -=-     =*         =:                 -O|   =*O-              *
+ *  -#*-               -#:   :*    =--:               +#  -#-*#               *
+ * -#:           :=O#=+:O+#= =*=O--= #+ ++     *WO#*++#==*O- =* *O| -=WO#*++*-*
+ *  :=====**+::=*-+#:==+W* =-*O+-O#: #==-*#+*=**O-    :-:W=  #+-O===:*O-      *
+ *          :#::#-     :=   -                  --      :W*   #:      --       *
+ *        -=+ -=+                                            -:               *
+ *       -=-+#+                                                               *
+ *        --                                                                  *
+ ******************************************************************************
+ */
+
 #pragma once
-#ifndef SCHWURBLER_CONTROLLERS_SCHWURBLERCONTROLLER_H_
-#define SCHWURBLER_CONTROLLERS_SCHWURBLERCONTROLLER_H_
 
 #ifndef ARDUINO
 #include "Arduino.h" // Arduino Header
 #endif // ARDUINO
-#define Schwurbler_DEF_ButtonController_Active 
+#define Schwurbler_DEF_ButtonController_Active
 #define Schwurbler_DEF_PotiController_Active
 
 /**
- * After a longer thought about how having the libary as easy as possible for non programmers, i came to the decission
+ * After a longer thought about how having the library as easy as possible for non programmers, i came to the decission
  * to break with the abstract thinking and keep it simple stupid.
- * Wihthing this header all needed headers will be set to get a runnable Schuwurbler.
- * 
- * The customization runs completly with definitions, it's intended to set a clickable interface on top maybe.
+ * Withing this header all needed headers will be set to get a runnable Schwurbler.
+ *
+ * The customization runs completely with definitions, it's intended to set a click-able interface on top maybe.
  * So here all definitions will be set that are not set in the main.h
  */
 
@@ -84,21 +138,35 @@
 // If active is defined all needed  will be checked
 #ifdef Schwurbler_DEF_RotaryEncoderController_Active
 
+/**
+ * Amount of Rotary Encoders
+ */
 #ifndef Schwurbler_DEF_RotaryEncoderController_Amount
 // Set's the Pins for the Buttons
 #define Schwurbler_DEF_RotaryEncoderController_Amount                  4
 #endif // Schwurbler_DEF_RotaryEncoderController_Amount
 
+/**
+ * List with Pins
+ * All clock pins connected to a Rotary Encoder
+ */
 #ifndef Schwurbler_DEF_RotaryEncoderController_Pins
 // Set's the Pins for the Buttons
 #define Schwurbler_DEF_RotaryEncoderController_Pins                    { 23, 21, 19, 17 }
 #endif // Schwurbler_DEF_RotaryEncoderController_Pins
 
+/**
+ * Second List with Pins
+ * All not clock pins connected to a Rotary Encoder
+ */
 #ifndef Schwurbler_DEF_RotaryEncoderController_Pins2
 // Set's the Pins for the Buttons2
 #define Schwurbler_DEF_RotaryEncoderController_Pins2                   { 22, 20, 18, 16 }
 #endif // Schwurbler_DEF_RotaryEncoderController_Pins2
 
+/**
+ * List with Midi Keys to send to
+ */
 #ifndef Schwurbler_DEF_RotaryEncoderController_Keys
 // Set's the MidiKeys for the Buttons
 #define Schwurbler_DEF_RotaryEncoderController_Keys                    { 21, 22, 23, 25 }
@@ -115,4 +183,3 @@
 #define Schwurbler_DEF_arrayCount(x) (sizeof(x) / sizeof(x)[0])
 #endif // Schwurbler_DEF_arrayCount
 // ------------------------------------               HELPER Definitions               ------------------------------------ //
-#endif // SCHWURBLER_CONTROLLERS_SCHWURBLERCONTROLLER_H_

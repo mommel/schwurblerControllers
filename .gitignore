@@ -4,3 +4,7 @@
 docs/build/xml
 docs/build/latex
 utils/node_modules
+docs/build/
+docs/_build
+/docs/controllers
+/docs/doxyoutput

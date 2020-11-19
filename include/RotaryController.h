@@ -1,47 +1,21 @@
 /**
-  * @package SchwurblerControllers
-  * 
-  * @file RotaryEncoder.h
-  *
-  * @version 1.0.0 - Nov 05 2020
-  *
-  * @brief Handles all about the Rotary Encoder
-  *
-  * @author Manuel Braun
-  * Contact: github.com/mommel
-  *
-  * @copyright Manuel Braun & HappyShooting Community 
-  *  
-  * @section DESCRIPTION
-  * 
-  * Der Schwurbler
-  *
-  * This product includes software developed by the
-  * HappyShooting Community (http://happyshooting.de/).
-  *
-  * @section LICENSE
-  *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the (CC BY-NC-SA 4 0)
-  * Creative Commons Attribution-NonCommercial-ShareAlike 4 0 International
-  * as published by Creative Commons Corporation; either version 4 of the
-  * License, or (at your option) any later version
-  *
-  * @section DISCLAIMER
-  * 
-  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN
-  * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-  * USE OR OTHER DEALINGS IN THE SOFTWARE
-  *
-  */
+ * @file RotaryController.h
+ * @class RotaryController
+ *
+ * @defgroup   ROTARYCONTROLLER Rotary Controller
+ *
+ * @brief       The Controller for the Rotary Encoder.
+ *
+ * @author     Manuel Braun
+ * @date       2020-10-14
+ *
+ * @version 1.0.3
+ *
+ * @copyright Copyright (c) 2020 - Manuel Braun & HappyShooting Community
+ */
+
 #pragma once
 #define Schwurbler_DEF_RotaryEncoderController_Active
-#ifndef SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_
-#define SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_
 #include <SchwurblerController.h> // Definitionsheader
 #include <Encoder.h>
 
@@ -67,14 +41,8 @@ class RotaryController {
  public:
   /**
    * RotaryController constructor
-   * @warning Not yet completed 
-   * @param amount amount of Buttons the controller should be able to handle
-   * @param pinList List of pin numbers matches Button by Button e.g. {1, 2, 3}
-   * @param midiValueList List of Midivalues matches Button by Button e.g. {21,
-   * 22, 23} Hint on Buttonmapping:
-   * First Entry of pinList will be matched to first entry of
-   * midiValueList etc.
-   *
+   * @warning Not yet completed
+   * @attention You shall not use this by now
    */
   RotaryController() {
     for (int i = 0; i <= Schwurbler_DEF_RotaryEncoderController_Amount; i++) {
@@ -93,7 +61,7 @@ class RotaryController {
   int rotaryPositionStore[Schwurbler_DEF_RotaryEncoderController_Amount];
   Encoder *rotaryEncoder[Schwurbler_DEF_RotaryEncoderController_Amount];
   MidiValueChangeCallbackHandler midiValueChangeCallback;
-  
+
  public:
   /**
    * Returns Buttons amount of controller
@@ -114,11 +82,11 @@ class RotaryController {
 
   /**
    * Sets the callbackfunction to be called while getData
-   * @param midiTriggerCallback
+   * @param _midiValueChangeCallback
    * void *(int MidiKey, byte Midivalue);
    * pointer to a function
    */
-  void handleMidiValueChangeCallback(MidiValueChangeCallbackHandler midiValueChangeCallback);
+  void handleMidiValueChangeCallback(MidiValueChangeCallbackHandler _midiValueChangeCallback);
 
   /**
    * Itterates over all buttons and checks for status changes.
@@ -126,4 +94,3 @@ class RotaryController {
    */
   void getData();
 };
-#endif  // SCHWURBLERCONTROLLERS_ROTARYCONTROLLER_H_

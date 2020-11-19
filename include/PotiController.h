@@ -1,46 +1,20 @@
 /**
-  * @package SchwurblerControllers
-  * 
-  * @file PotiController.h
-  *
-  * @version 1.0.0 - Nov 05 2020
-  *
-  * @brief Handles all about the Potentiometers
-  *
-  * @author Manuel Braun
-  * Contact: github.com/mommel
-  *
-  * @copyright Manuel Braun & HappyShooting Community 
-  *  
-  * @section DESCRIPTION
-  * 
-  * Der Schwurbler
-  *
-  * This product includes software developed by the
-  * HappyShooting Community (http://happyshooting.de/).
-  *
-  * @section LICENSE
-  *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the (CC BY-NC-SA 4 0)
-  * Creative Commons Attribution-NonCommercial-ShareAlike 4 0 International
-  * as published by Creative Commons Corporation; either version 4 of the
-  * License, or (at your option) any later version
-  *
-  * @section DISCLAIMER
-  * 
-  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN
-  * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-  * USE OR OTHER DEALINGS IN THE SOFTWARE
-  *
-  */
+ * @file ButtonController.h
+ * @class ButtonController
+ *
+ * @defgroup   BUTTONCONTROLLER Button Controller
+ *
+ * @brief       The Controller for the Buttons.
+ *
+ * @author     Manuel Braun
+ * @date       2020-10-14
+ *
+ * @version 1.0.3
+ *
+ * @copyright Copyright (c) 2020 - Manuel Braun & HappyShooting Community
+ */
+
 #pragma once
-#ifndef SCHWURBLER_CONTROLLERS_POTICONTROLLER_H_
-#define SCHWURBLER_CONTROLLERS_POTICONTROLLER_H_
 #include <SchwurblerController.h> // Definitionsheader
 #include <ResponsiveAnalogRead.h>  // Dependent library header
 
@@ -62,22 +36,12 @@ typedef void (*MidiValueChangeCallbackHandler)(int, byte);
  * which Pin to Listen and where to send. SendsMidi Events on getData
  * triggered if status changed
  */
-
 class PotiController {
  public:
-  /**
-   * PotiController constructor
-   * @param amount amount of Buttons the controller should be able to handle
-   * @param pinList List of pin numbers matches Button by Button e.g. {1, 2, 3}
-   * @param midiValueList List of Midivalues matches Button by Button e.g. {21,
-   * 22, 23} Hint on Buttonmapping:
-   * First Entry of pinList will be matched to first entry of
-   * midiValueList etc.
-   *
-   */
-
+  // PotiController constructor
+  // Creates for each poti ResponsiveAnalogRead on matching pin.
   PotiController() {
-    for (int i = 0; i <= kAmount; i++) {
+    for (int i = 0; i <= Schwurbler_DEF_PotiController_Amount; i++) {
       this->potis[i]=ResponsiveAnalogRead(this->pins[i], true);
       this->potiValueStore[i] = 0;
       this->potiValueLagStore[i] = 0;
@@ -94,17 +58,34 @@ class PotiController {
   }
 
  private:
+  // The amount of Potis handled by the controller
   const uint8_t kAmount = Schwurbler_DEF_PotiController_Amount;
+  // Constant Array holding all Potis pins 1o1 match
   const int pins[Schwurbler_DEF_PotiController_Amount] = Schwurbler_DEF_PotiController_Pins;
+  // Constant Array holding all Potis midiKeys 1o1 match
   const int midiKeys[Schwurbler_DEF_PotiController_Amount] = Schwurbler_DEF_PotiController_Keys;
+  // Array holding all Potis last value
   byte potiValueStore[Schwurbler_DEF_PotiController_Amount];
+  // Array holding all Potis lag value
   byte potiValueLagStore[Schwurbler_DEF_PotiController_Amount];
+  // Array holding all Potis pins through a ResponsiveAnalogRead
   ResponsiveAnalogRead potis[Schwurbler_DEF_PotiController_Amount];
+  // Callback Handler will be called on midi value changes
   MidiValueChangeCallbackHandler midiValueChangeCallback;
 
+  // Private function to write a poti's value into store
+  // @param identifier int representing the poti's id
+  // @param value int representing the poti's value
   void setPotiValueStore(int identifier, int value);
+  // Private function to get a poti's value from store
+  // @param identifier int representing the poti's id
   int getPotiValueStore(int identifier);
+  // Private function to write a poti's lag value into store
+  // @param identifier int representing the poti's id
+  // @param value int representing the poti's value
   void setPotiLagStore(int identifier, int value);
+  // Private function to get a poti's lag value from store
+  // @param identifier int representing the poti's id
   int getPotiLagStore(int identifier);
 
  public:
@@ -121,12 +102,12 @@ class PotiController {
 
   /**
    * Sets the callbackfunction to be called while getData
-   * @param midiTriggerCallback
+   * @param _midiValueChangeCallback
    * void *(int MidiKey, byte Midivalue);
    * pointer to a function
    */
   void handleMidiValueChangeCallback(
-      MidiValueChangeCallbackHandler midiValueChangeCallback);
+      MidiValueChangeCallbackHandler _midiValueChangeCallback);
 
   /**
    * Itterates over all buttons and checks for status changes.
@@ -134,4 +115,3 @@ class PotiController {
    */
   void getData();
 };
-#endif  // SCHWURBLERAIR_CONTROLLER_POTICONTROLLER_H_
